@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntitiyFramework;
 using DataAccess.Concrete.InMemory;
+using Entities;
 using Entities.Concrete;
 using System;
 
@@ -15,8 +16,86 @@ namespace ConsoleUI
             //ColorUpdateTest();
             //CarDeleteTest();
             //BrandTest();
-            CarDetails();
+            //CarDetails();
+            //UserAdd();
+            //CustomerAdd();
+            //RentalAdd();
 
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.GetRentalDetails();
+            if (result.Success == true)
+            {
+                foreach (var rental in result.Data)
+                {
+                    Console.WriteLine("Araba İsmi : " + rental.CarName + " / " + "Kiralayan Şirket : " + rental.CompanyName + " / "
+                                     + "Günlük Kira Ücreti : " + rental.DailyPrice + " / " + "Kiralama Tarihi : " + rental.RentDate
+                                     + " / " + "Kiralama Bitiş Tarihi : " + rental.ReturnDate);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+        }
+
+        private static void RentalAdd()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental
+            {
+                CarID = 3,
+                CustomerID = 3,
+                RentDate = new DateTime(2021,07,17),
+                
+
+            });
+            if (result.Success)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void CustomerAdd()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.Add(new Customer
+            {
+                UserID = 3,
+                CompanyName = "CiOtoKiralama"
+            });
+            if (result.Success)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void UserAdd()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            var result = userManager.Add(new User
+            {
+                FirstName = "Cihangir",
+                LastName = "Ceyhan",
+                Email = "ceyhancihangir@gmail.com",
+                Password = "123456cc",
+            });
+            if (result.Success)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void CarDetails()
