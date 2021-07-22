@@ -31,6 +31,10 @@ namespace Business.Constants
         public static string ColorAddError = "Renk Eklenemedi";
 
         public static string MaintenanceTime = "Sistem Şuan Bakımda.";
-     
+        public static string Added = "Eklendi";
+        public static string Deleted = "Silindi";
+        public static string Updated = "Güncellendi";
+        public static string Rented = "Kiralandı";
+        internal static string InActiveUse;
     }
 }
