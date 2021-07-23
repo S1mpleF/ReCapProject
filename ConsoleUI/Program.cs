@@ -20,7 +20,25 @@ namespace ConsoleUI
             //UserAdd();
             //CustomerAdd();
             //RentalAdd();
+            //RentalDetails();
 
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetAll();
+            if (result.Success==true)
+            {
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.DailyPrice + " / " + car.Description + " / " + car.ModelYear);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void RentalDetails()
+        {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.GetRentalDetails();
             if (result.Success == true)
@@ -36,7 +54,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(result.Message);
             }
-
         }
 
         private static void RentalAdd()
