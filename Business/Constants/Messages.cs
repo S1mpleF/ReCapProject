@@ -13,7 +13,7 @@ namespace Business.Constants
         public static string CarDeleted = "Araba Silindi";
         public static string CarUpdated = "Araba Güncellendi";
         public static string AddError = "Ekleme Başarısız Oldu";
-        public static string CarListed = "Arabalar Listelendi";
+        public static string CarsListed = "Arabalar listelendi";
         public static string CarDetails = "Araba Detayları Listelendi";
 
         public static string BrandAdded = "Marka Eklendi";
@@ -35,6 +35,6 @@ namespace Business.Constants
         public static string Deleted = "Silindi";
         public static string Updated = "Güncellendi";
         public static string Rented = "Kiralandı";
-        internal static string InActiveUse;
+        public static string InActiveUse = "Araba Kullanımda";
     }
 }

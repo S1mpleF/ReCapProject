@@ -45,20 +45,20 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.CarUpdated);
         }
-
-        public IDataResult<List<Car>> GetAll()
+      
+    public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 13)
+            if (DateTime.Now.Hour == 00)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
+        
 
         public IDataResult<Car> GetbyId(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(car => car.CarID == carId));
-
 
         }
 
