@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Business.Concrete
-{
+{ 
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;

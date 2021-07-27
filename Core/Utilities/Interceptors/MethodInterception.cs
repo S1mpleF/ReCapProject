@@ -10,7 +10,7 @@ namespace Core.Utilities.Interceptors
         protected virtual void OnException(IInvocation invocation, System.Exception e) { }
         protected virtual void OnSuccess(IInvocation invocation) { }
         public override void Intercept(IInvocation invocation) // add metodu vs
-        {
+        { 
             var isSuccess = true;
             OnBefore(invocation);
             try

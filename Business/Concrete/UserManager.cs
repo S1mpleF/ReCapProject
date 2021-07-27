@@ -18,7 +18,7 @@ namespace Business.Concrete
         IUserDal _userDal;
 
         public UserManager(IUserDal userDal)
-        {
+        { 
             _userDal = userDal;
         }
 

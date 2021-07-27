@@ -13,6 +13,6 @@ namespace Business.ValidationRules.FluentValidation
         public CustomerValidator()
         {
             RuleFor(cu => cu.CompanyName).NotEmpty();
-        }
+        } 
     }
 }

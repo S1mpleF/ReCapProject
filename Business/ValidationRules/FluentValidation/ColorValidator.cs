@@ -13,6 +13,6 @@ namespace Business.ValidationRules.FluentValidation
         public ColorValidator()
         {
             RuleFor(co => co.ColorName).NotEmpty();
-        }
+        }  
     }
 }
