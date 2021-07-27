@@ -28,7 +28,7 @@ namespace Business.Concrete
         {
             if (rental.ReturnDate == null)
             {
-                return new ErrorResult(Messages.InActiveUse);
+                return new ErrorResult(Messages.InActiveUse); 
             }
             _rentalDal.Add(rental);
 

@@ -12,7 +12,7 @@ namespace Core.Utilities.Interceptors
         public override void Intercept(IInvocation invocation) // add metodu vs
         { 
             var isSuccess = true;
-            OnBefore(invocation);
+            OnBefore(invocation); 
             try
             {
                 invocation.Proceed();

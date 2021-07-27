@@ -17,7 +17,7 @@ namespace Business.Concrete
     {
         IColorDal _colorDal; 
 
-        public ColorManager(IColorDal colorDal)
+        public ColorManager(IColorDal colorDal) 
         {
             _colorDal = colorDal;
         }
