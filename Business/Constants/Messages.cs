@@ -36,5 +36,10 @@ namespace Business.Constants
         public static string Updated = "Güncellendi";
         public static string Rented = "Kiralandı";
         public static string InActiveUse = "Araba Kullanımda";
+        internal static string ImageLimitOver = "Her Arabanın en fazla 5 Fotoğrafı Olabilir";
+        internal static string ImageAdded = "Fotoğraf Yüklendi";
+        internal static string CarImageUpdated = "Fotoğraf Güncellendi";
+        internal static string CarImageNotFound = "Fotoğraf Bulunamadı";
+        internal static string CarImageDeleted = "Fotoğraf Silindi";
     }
 }

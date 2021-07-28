@@ -29,7 +29,7 @@ namespace DataAccess.Concrete.EntitiyFramework
                                  BrandName=b.BrandName,
                                  ColorName=co.ColorName,
                                  DailyPrice=c.DailyPrice,
-                                 CarName=c.CarName
+                                 CarName=c.CarName,
                              };
                 return result.ToList();
             }
