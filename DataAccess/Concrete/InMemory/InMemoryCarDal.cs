@@ -18,11 +18,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _car = new List<Car>
             {
-                new Car{CarID=1,BrandId=1,ColorId=1,DailyPrice=78000,ModelYear="2013",Description="Renault Symbol; Tertemiz,Kazasız,Boyasız Araç"},
-                new Car{CarID=2,BrandId=1,ColorId=2,DailyPrice=120000,ModelYear="2015",Description="Renault Megane; Lokal Boyalıdır"},
-                new Car{CarID=3,BrandId=2,ColorId=3,DailyPrice=180000,ModelYear="2017",Description="VW Scirocco; 3500TL Hasar Kaydı Vardır"},
-                new Car{CarID=4,BrandId=3,ColorId=3,DailyPrice=300000,ModelYear="2019",Description="VW Passat; Acil Satılık"},
-                new Car{CarID=5,BrandId=4,ColorId=2,DailyPrice=1250000,ModelYear="2021",Description="Dodge Charger; Türkiyede Sadece Sınırlı Sayıda Bulunmaktadır."}
+                new Car{Id=1,BrandId=1,ColorId=1,DailyPrice=78000,ModelYear="2013",Description="Renault Symbol; Tertemiz,Kazasız,Boyasız Araç"},
+                new Car{Id=2,BrandId=1,ColorId=2,DailyPrice=120000,ModelYear="2015",Description="Renault Megane; Lokal Boyalıdır"},
+                new Car{Id=3,BrandId=2,ColorId=3,DailyPrice=180000,ModelYear="2017",Description="VW Scirocco; 3500TL Hasar Kaydı Vardır"},
+                new Car{Id=4,BrandId=3,ColorId=3,DailyPrice=300000,ModelYear="2019",Description="VW Passat; Acil Satılık"},
+                new Car{Id=5,BrandId=4,ColorId=2,DailyPrice=1250000,ModelYear="2021",Description="Dodge Charger; Türkiyede Sadece Sınırlı Sayıda Bulunmaktadır."}
             };
         }
         public void Add(Car car)
@@ -32,7 +32,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car CarToDelete = _car.SingleOrDefault(c => c.CarID == car.CarID);
+            Car CarToDelete = _car.SingleOrDefault(c => c.Id == car.Id);
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
@@ -52,7 +52,7 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Car> GetById(int id)
         {
-            return _car.Where(c => c.CarID == id).ToList();
+            return _car.Where(c => c.Id == id).ToList();
         }
 
         public List<CarDetailDto> GetCarDetails()
@@ -62,7 +62,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car CarToUpdate = _car.SingleOrDefault(c => c.CarID == car.CarID);
+            Car CarToUpdate = _car.SingleOrDefault(c => c.Id == car.Id);
             CarToUpdate.BrandId = car.BrandId;
             CarToUpdate.ColorId = car.ColorId;
             CarToUpdate.DailyPrice = car.DailyPrice;

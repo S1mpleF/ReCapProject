@@ -17,11 +17,11 @@ namespace Business.Abstract
         IDataResult<Car> GetbyId(int carId);
         IDataResult<List<CarDetailDto>> GetCarDetails();
 
-        IResult add(Car car);
+        IResult Add(Car car);
         IResult Delete(Car car);
         IResult Update(Car car);
 
-       
+        IResult AddTransactionalTest(Car car);
 
     }
 }

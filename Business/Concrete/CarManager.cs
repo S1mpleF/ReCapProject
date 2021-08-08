@@ -1,6 +1,10 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
@@ -12,11 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class CarManager : ICarService  
+    public class CarManager : ICarService
     {
         ICarDal _carDal;
 
@@ -25,10 +30,13 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+
+        [SecuredOperation("car.add,admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
-        public IResult add(Car car)
+        public IResult Add(Car car)
         {
-            
+
             _carDal.Add(car);
 
             return new SuccessResult(Messages.CarAdded);
@@ -41,14 +49,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
 
             return new SuccessResult(Messages.CarUpdated);
         }
-      
-    public IDataResult<List<Car>> GetAll()
+
+        [CacheAspect]
+        //[PerformanceAspect(5)]
+        public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour == 00)
             {
@@ -56,11 +67,11 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
-        
 
+        [CacheAspect]
         public IDataResult<Car> GetbyId(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(car => car.CarID == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(car => car.Id == carId));
 
         }
 
@@ -79,6 +90,13 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
 
-        
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            _carDal.Update(car);
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarUpdated);
+        }
+
     }
 }

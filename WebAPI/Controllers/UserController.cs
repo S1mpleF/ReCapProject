@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Entities.Concrete;
+using Core.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,10 +19,8 @@ namespace WebAPI.Controllers
         {
             _userService = userService;
         }
-
         [HttpGet("getall")]
-
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var result = _userService.GetAll();
             if (result.Success)
@@ -31,9 +29,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
         [HttpGet("getbyid")]
-
         public IActionResult GetById(int id)
         {
             var result = _userService.GetById(id);
@@ -41,10 +37,9 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpPost("add")]
-
         public IActionResult Add(User user)
         {
             var result = _userService.Add(user);
@@ -52,23 +47,9 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
-
-        [HttpDelete("delete")]
-
-        public IActionResult Delete(User user)
-        {
-            var result = _userService.Delete(user);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result.Message);
-        }
-
         [HttpPost("update")]
-
         public IActionResult Update(User user)
         {
             var result = _userService.Update(user);
@@ -76,7 +57,17 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
+        }
+        [HttpPost("delete")]
+        public IActionResult Delete(User user)
+        {
+            var result = _userService.Delete(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

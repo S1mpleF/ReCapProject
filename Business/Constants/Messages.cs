@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,5 +42,12 @@ namespace Business.Constants
         internal static string CarImageUpdated = "Fotoğraf Güncellendi";
         internal static string CarImageNotFound = "Fotoğraf Bulunamadı";
         internal static string CarImageDeleted = "Fotoğraf Silindi";
+        internal static string AuthorizationDenied = "Yetkiniz Yok";
+        internal static string UserAlreadyExists = "Böyle Bir Kullanıcı Bulunmaktadır";
+        internal static string SuccessfulLogin = "Başarıyla Giriş Yapıldı";
+        internal static string PasswordError = "Şifre Hatalı";
+        internal static string UserRegistered = "Kayıt Olundu";
+        internal static string UserNotFound = "Kullanıcı Bulunamadı";
+        internal static string AccessTokenCreated = "Access Token Oluşturuldu";
     }
 }
